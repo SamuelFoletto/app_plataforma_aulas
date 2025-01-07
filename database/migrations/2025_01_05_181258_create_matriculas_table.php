@@ -11,22 +11,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('alunos', function (Blueprint $table) {
+        Schema::create('matriculas', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
-            $table->string('cpf')->unique();
-            $table->string('email', 70);
-            $table->date('data_nascimento');
+            $table->unsignedBigInteger('curso_id');
+            $table->unsignedBigInteger('aluno_id');
+            $table->date('data_matricula');
             $table->timestamps();
             $table->softDeletes();
+
+
+            $table->foreign('curso_id')->references('id')->on('cursos');
+            $table->foreign('aluno_id')->references('id')->on('alunos');
+
         });
+
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('alunos');
+        Schema::dropIfExists('matriculas');
     }
 };

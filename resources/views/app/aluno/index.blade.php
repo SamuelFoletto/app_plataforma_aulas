@@ -23,6 +23,7 @@
                 <th>ID</th>
                 <th>Nome</th>
                 <th>E-mail</th>
+                <th>CPF</th>
                 <th></th>
             </tr>
             </thead>
@@ -32,7 +33,9 @@
                 <td>{{$aluno->id}}</td>
                 <td> {{$aluno->nome}}</td>
                 <td>{{$aluno->email}}</td>
-                <td><a href="{{route('aluno.show', $aluno->id)}}"><button class="btn btn-warning fw-bold">Editar</button></a></td>
+                <td>{{$aluno->cpf}}</td>
+                <td><a href="{{route('aluno.show', $aluno->id)}}"><button class="btn btn-success fw-bold">Visualizar</button></a></td>
+                <td><a href="{{route('aluno.edit', $aluno->id)}}"><button class="btn btn-warning fw-bold">Editar</button></a></td>
                 <td>
                     <form action="{{route('aluno.destroy', ['aluno' => $aluno->id])}}" method="post">
                         @csrf

@@ -35,7 +35,8 @@
                     <td>{{$curso->nome}}</td>
                     <td>{{$curso->descricao}}</td>
                     <td>{{$curso->duracao.' H'}}</td>
-                    <td><a href="{{route('curso.show', $curso->id)}}"><button class="btn btn-warning fw-bold">Editar</button></a></td>
+                    <td><a href="{{route('curso.show', $curso->id)}}"><button class="btn btn-success fw-bold">Visualizar</button></a></td>
+                    <td><a href="{{route('curso.edit', $curso->id)}}"><button class="btn btn-warning fw-bold">Editar</button></a></td>
                     <td>
                         <form action="{{route('curso.destroy', ['curso' => $curso->id])}}" method="post">
                             @csrf

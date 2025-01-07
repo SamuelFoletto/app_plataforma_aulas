@@ -48,15 +48,16 @@ class CursoController extends Controller
     }
 
 
-    public function edit(string $id)
+    public function edit(Curso $curso)
     {
-
+        return view('app.curso.edit', ['curso' => $curso]);
     }
 
 
-    public function update(Request $request, string $id)
+    public function update(Request $request, Curso $curso)
     {
-
+        $curso->update($request->all());
+        return redirect()->route('curso.index');
     }
 
     public function destroy(string $id)

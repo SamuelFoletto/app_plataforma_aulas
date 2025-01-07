@@ -27,12 +27,14 @@ class AlunoController extends Controller
         $regra = [
             'nome' => 'required|min:3|max:70',
             'email' => 'required|email|unique:alunos',
+            'cpf' => 'required|cpf|unique:alunos',
             'data_nascimento' => 'required|date',
         ];
         $mensagem = [
             'nome.min' => 'O campo :attribute deve ter pelo menos 3 caracteres',
             'nome.max' => 'O campo :attribute deve ter no maximo 70 caracteres',
             'email.email' => 'O campo :attribute deve ser preenchido com um e-mail correto',
+            'cpf.cpf' => 'Informe um CPF válido',
             'required' => 'O campo :attribute é obrigatório'
         ];
 
@@ -51,14 +53,16 @@ class AlunoController extends Controller
         return view('app.aluno.show', ['aluno' => $aluno]);
     }
 
-    public function edit(string $id)
+    public function edit(Aluno $aluno)
     {
-        //
+        return view('app.aluno.edit', ['aluno' => $aluno]);
+
     }
 
-    public function update(Request $request, string $id)
+    public function update(Request $request, Aluno $aluno)
     {
-        //
+        $aluno->update($request->all());
+        return redirect()->route('aluno.index');
     }
 
     public function destroy($id)

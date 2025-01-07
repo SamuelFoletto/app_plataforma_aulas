@@ -16,7 +16,7 @@
                     <a class="nav-link" href="{{route('curso.index')}}">Cursos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-disabled="true">Matriculas</a>
+                    <a class="nav-link" href="{{route('matricula.index')}}">Matriculas</a>
                 </li>
             </ul>
         </div>

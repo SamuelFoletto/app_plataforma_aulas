@@ -15,5 +15,12 @@ class Curso extends Model
         'descricao',
         'duracao'
     ];
-    //
+
+    public function matriculas(){
+        return $this->hasMany('App\Models\Matricula', 'curso_id', 'id');
+    }
+
+    public function contaMatriculas(){
+        return $this->matriculas()->count();
+    }
 }
