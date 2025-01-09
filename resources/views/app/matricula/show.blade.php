@@ -22,6 +22,8 @@
         <th>Nome do Aluno</th>
         <th>Email</th>
         <th>Data de matricula</th>
+        <th></th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -31,6 +33,14 @@
             <td>{{ $matricula->aluno->nome }}</td>
             <td>{{ $matricula->aluno->email }}</td>
             <td>{{$matricula->data_matricula}}</td>
+            <td><a href="{{route('matricula.edit', $matricula->id)}}"><button type="submit" class="btn btn-primary fw-bold">Editar</button></a></td>
+            <td>
+                <form action="{{route('matricula.destroy', ['matricula' => $matricula])}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger fw-bold" type="submit">Excluir</button>
+                </form>
+            </td>
         </tr>
     @endforeach
     </tbody>

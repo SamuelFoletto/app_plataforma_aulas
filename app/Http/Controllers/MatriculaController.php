@@ -63,20 +63,24 @@ class MatriculaController extends Controller
 
 
 
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $matricula = Matricula::find($id);
+        $cursos = Curso::all();
+        return view('app.matricula.edit', ['matricula' => $matricula, 'cursos' => $cursos]);
     }
 
-    public function update(Request $request, string $id)
+    public function update(Request $request, Matricula $matricula)
     {
-        //
+        $matricula->update($request->all());
+        return redirect()->route('matricula.index');
     }
 
 
     public function destroy(string $id)
     {
-        //
+        Matricula::find($id)->delete();
+        return redirect()->route('matricula.index');
     }
 
 
